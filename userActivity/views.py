@@ -40,6 +40,9 @@ class ActivityPeriodView(APIView):
         if len(request.query_params)==0:
             try:
                 all_activity_data = AllActivityPeriodSerializer(ActivityPeriod.objects.all(), many=True)
+                for activity_period in all_activity_data.data:
+                    activity_period['start_time'] = self.convert_datetime(activity_period['start_time'])
+                    activity_period['end_time'] = self.convert_datetime(activity_period['end_time'])
                 return Response({'msg':'Success', 'data': all_activity_data.data})
             except Exception as e:
                 print('Exception : ', e)
