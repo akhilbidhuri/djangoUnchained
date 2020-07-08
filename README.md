@@ -27,6 +27,7 @@ This serves you the User data and User Activity data.
        <li>Output: User data and activity of that particular User in JSON</li>
        </ul>
   </li>
+  </ol>
 
 <h2>Custom Management Command:<h2>
   <h4>populate:</h4>
