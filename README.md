@@ -11,6 +11,7 @@ This serves you the User data and User Activity data.
   <li>Method : GET</li>
   <li>Params : Null</li>
   <li>Output : All the User data</li>
+  </ul>
   
 <h4>Activity API:</h4>
   <ol>
