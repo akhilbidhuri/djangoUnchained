@@ -6,10 +6,11 @@ This serves you the User data and User Activity data.
 
 <h2>APIS :</h2> 
 <h4>Users API:</h4>
-  Path : https://unchaineddjango.herokuapp.com/api/users/
-  Method : GET
-  Params : Null
-  Output : All the User data
+  <ul>
+  <li>Path : https://unchaineddjango.herokuapp.com/api/users/</li>
+  <li>Method : GET</li>
+  <li>Params : Null</li>
+  <li>Output : All the User data</li>
   
 <h4>Activity API:</h4>
   <ol>
