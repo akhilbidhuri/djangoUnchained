@@ -6,25 +6,28 @@ This serves you the User data and User Activity data.
 
 <h2>APIS :</h2> 
 <h4>Users API:</h4>
-  Path : https://unchaineddjango.herokuapp.com/api/users/
-  Method : GET
-  Params : Null
-  Output : All the User data
+  <ul>
+  <li>Path : https://unchaineddjango.herokuapp.com/api/users/</li>
+  <li>Method : GET</li>
+  <li>Params : Null</li>
+  <li>Output : All the User data</li>
+  </ul>
   
 <h4>Activity API:</h4>
   <ol>
-  <li> <ul><li>Path : https://unchaineddjango.herokuapp.com/activity_period</li>
+  <li> <ul><li>Path : https://unchaineddjango.herokuapp.com/api/activity_period</li>
        <li>Method : GET</li>
        <li>Params : Null</li>
        <li>Output : All the Activity Data in JSON</li>
        </ul>
   </li>  
-  <li> <ul><li>Path : https://unchaineddjango.herokuapp.com/activity_period?user_name=<user_name></li>
+  <li> <ul><li>Path : https://unchaineddjango.herokuapp.com/api/activity_period?user_name=<user_name></li>
        <li>Method : GET</li>
        <li>Params : User name</li>
        <li>Output: User data and activity of that particular User in JSON</li>
        </ul>
   </li>
+  </ol>
 
 <h2>Custom Management Command:<h2>
   <h4>populate:</h4>
