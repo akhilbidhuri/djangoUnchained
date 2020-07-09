@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from datetime import datetime
+from rest_framework import status
 from rest_framework.response import Response
 from .models import Users, ActivityPeriod
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from .serializers import UserSerializer, ActivityPeriodSerializer, AllActivityPeriodSerializer
+
 
 class UserView(APIView):
     """User Data API
@@ -16,10 +19,10 @@ class UserView(APIView):
     def get(self, request, format=None):
         try:
             all_user_data = self.serializer(Users.objects.all(), many=True)
-            return Response({'msg':'Success', 'data': all_user_data.data})
+            return Response({'msg':'Success', 'data': all_user_data.data}, status=status.HTTP_200_OK)
         except Exception as e:
                 print('Exception : ', e)
-                return Response({'msg':'Some Error Occured'})
+                return Response({'msg':'Some Error Occured'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
 class ActivityPeriodView(APIView):
     """Activity Period API
@@ -43,10 +46,10 @@ class ActivityPeriodView(APIView):
                 for activity_period in all_activity_data.data:
                     activity_period['start_time'] = self.convert_datetime(activity_period['start_time'])
                     activity_period['end_time'] = self.convert_datetime(activity_period['end_time'])
-                return Response({'msg':'Success', 'data': all_activity_data.data})
+                return Response({'msg':'Success', 'data': all_activity_data.data}, status=status.HTTP_200_OK)
             except Exception as e:
                 print('Exception : ', e)
-                return Response({'msg':'Some Error Occured'})
+                return Response({'msg':'Some Error Occured'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         if len(request.query_params)==1:
             try:
@@ -64,7 +67,8 @@ class ActivityPeriodView(APIView):
                             activity_iter[key] = self.convert_datetime(activity_iter[key])
                     user['activity_periods'] = activity.data
                     resp.append(user)
-                return Response({'msg': 'Sucess', 'data': resp})
+                return Response({'msg': 'Sucess', 'data': resp}, status=status.HTTP_200_OK)
             except Exception as e:
                 print('Exception : ', e)
-                return Response({'msg':'Some Error Occured'})
+                
+        return Response({'msg':'Failed more than one params provided, Expected one param for user_name.'}, status=status.HTTP_400_BAD_REQUEST)
